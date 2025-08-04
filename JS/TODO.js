@@ -14,8 +14,7 @@ let TODOS = await fetch(TODO_API).then((res) =>
   res.json().then((data) => data.todos)
 );
 
-console.log(TODOS);
-function addTodo(todo) {
+export function addTodo(todo) {
   let todoRow = document.createElement("tr");
   let todoID = document.createElement("td");
   let todoDescription = document.createElement("td");
@@ -38,7 +37,7 @@ function addTodo(todo) {
   todoID.innerHTML = todo.id;
   todoDescription.innerHTML = todo.todo;
   todoUserID.innerHTML = todo.userId;
-  todoStatus.innerHTML = todo.completed;
+  todoStatus.innerHTML = todo.completed ? "Completed" : "Pending";
 
   todoActions.appendChild(button1);
   todoActions.appendChild(button2);

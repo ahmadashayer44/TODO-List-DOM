@@ -22,12 +22,15 @@
       <article class="container" id="container">
         <h1 id="todo-title">TODO List</h1>
         <section id="todo-add-inputs">
-          <input
-            type="text"
-            id="todo-text-add-input"
-            placeholder="Add New Task..."
-          />
-          <button id="todo-add-button">Add</button>
+          <form action="POST">
+            <input
+              type="text"
+              id="todo-text-add-input"
+              placeholder="Add New Task..."
+              required
+            />
+            <button type="submit" onsubmit="" id="todo-add-button">Add</button>
+          </form>
         </section>
         <section id="todo-search-inputs">
           <input

@@ -1,14 +1,7 @@
 import { TODO_API } from "./config.js";
-
-let button1 = document.createElement("button");
-let button2 = document.createElement("button");
+import { deleteTodo } from "./DeleteTODO.js";
 let totalTask = document.getElementById("total-tasks");
-let totalTaskCounter = 0;
-button1.innerHTML = "Delete";
-button2.innerHTML = "Done";
-
-button1.classList.add("delete-button");
-button2.classList.add("done-button");
+window.totalTaskCounter = 0;
 
 let TODOS = await fetch(TODO_API).then((res) =>
   res.json().then((data) => data.todos)
@@ -28,7 +21,9 @@ export function addTodo(todo) {
   button2.innerHTML = "Done";
   button1.classList.add("delete-button");
   button2.classList.add("done-button");
-
+  button1.addEventListener("click", () => {
+    deleteTodo(todo);
+  });
   todoActions.style.display = "flex";
   todoActions.style.flexDirection = "row";
   todoActions.style.justifyContent = "space-between";

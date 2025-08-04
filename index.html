@@ -22,14 +22,14 @@
       <article class="container" id="container">
         <h1 id="todo-title">TODO List</h1>
         <section id="todo-add-inputs">
-          <form action="POST">
+          <form onsubmit="AddTodoManually(event)">
             <input
               type="text"
               id="todo-text-add-input"
               placeholder="Add New Task..."
               required
             />
-            <button type="submit" onsubmit="" id="todo-add-button">Add</button>
+            <button type="submit" id="todo-add-button">Add</button>
           </form>
         </section>
         <section id="todo-search-inputs">
@@ -60,5 +60,6 @@
     </footer>
     <script type="module" src="JS/config.js"></script>
     <script type="module" src="JS/TODO.js"></script>
+    <script type="module" src="JS/AddTodoManually.js"></script>
   </body>
 </html>

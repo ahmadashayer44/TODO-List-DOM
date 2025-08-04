@@ -17,5 +17,45 @@
     <title>TODO List</title>
     <link rel="stylesheet" href="CSS/TODO.css" />
   </head>
-  <body></body>
+  <body>
+    <main>
+      <article class="container" id="container">
+        <h1 id="todo-title">TODO List</h1>
+        <section id="todo-add-inputs">
+          <input
+            type="text"
+            id="todo-text-add-input"
+            placeholder="Add New Task..."
+          />
+          <button id="todo-add-button">Add</button>
+        </section>
+        <section id="todo-search-inputs">
+          <input
+            type="text"
+            id="todo-search-input"
+            placeholder="Search tasks..."
+          />
+        </section>
+        <section id="todo-list">
+          <table id="todo-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>TODO Description</th>
+                <th>User ID</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="todo-tbody"></tbody>
+          </table>
+        </section>
+      </article>
+    </main>
+    <footer>
+      <p id="total-tasks-title">Total Tasks: <span id="total-tasks">0</span></p>
+    </footer>
+    <script type="module" src="JS/config.js"></script>
+    <script type="module" src="JS/TODO.js"></script>
+  </body>
 </html>

@@ -17,7 +17,7 @@ async function AddTodoManually(event) {
   });
   todo.id = await postRequest.json().then((data) => data.id);
   console.log(todo);
-  addTodo(todo);
+  addTodo(todo, "manual");
 }
 
 window.AddTodoManually = AddTodoManually;

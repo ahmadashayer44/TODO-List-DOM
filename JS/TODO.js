@@ -2,6 +2,8 @@ import { TODO_API } from "./config.js";
 import { deleteTodo } from "./DeleteTODO.js";
 import { updateTodoStatus } from "./UpdateTodoStatus.js";
 import { deleteDialog } from "./DeleteDialog.js";
+import { InlineEditing } from "./InlineEditing.js";
+import { saveTodo } from "./InlineEditing.js";
 let totalTask = document.getElementById("total-tasks");
 window.totalTaskCounter = 0;
 
@@ -9,16 +11,23 @@ export function addTodo(todo, callFrom) {
   let todoRow = document.createElement("tr");
   let todoID = document.createElement("td");
   let todoDescription = document.createElement("td");
+  todoDescription.onclick = () => {
+    InlineEditing(todoDescription);
+  };
   let todoUserID = document.createElement("td");
   let todoStatus = document.createElement("td");
   let todoActions = document.createElement("td");
 
   let button1 = document.createElement("button");
   let button2 = document.createElement("button");
+  let button3 = document.createElement("button");
+
   button1.innerHTML = "Delete";
   button2.innerHTML = "Done";
+  button3.innerHTML = "Save";
   button1.classList.add("delete-button");
   button2.classList.add("done-button");
+  button3.classList.add("done-button");
   button1.addEventListener("click", () => {
     deleteDialog(todo);
   });
@@ -26,6 +35,9 @@ export function addTodo(todo, callFrom) {
     const row = button2.closest("tr");
     const todoId = row.querySelector("td").innerText;
     updateTodoStatus(todoStatus, todoId);
+  });
+  button3.addEventListener("click", () => {
+    saveTodo(todo);
   });
   todoActions.style.display = "flex";
   todoActions.style.flexDirection = "row";
@@ -39,6 +51,7 @@ export function addTodo(todo, callFrom) {
 
   todoActions.appendChild(button1);
   todoActions.appendChild(button2);
+  todoActions.appendChild(button3);
 
   todoRow.appendChild(todoID);
   todoRow.appendChild(todoDescription);

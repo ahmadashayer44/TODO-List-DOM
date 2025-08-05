@@ -1,5 +1,6 @@
 import { TODO_API } from "./config.js";
 import { deleteTodo } from "./DeleteTODO.js";
+import { updateTodoStatus } from "./UpdateTodoStatus.js";
 let totalTask = document.getElementById("total-tasks");
 window.totalTaskCounter = 0;
 
@@ -23,6 +24,11 @@ export function addTodo(todo) {
   button2.classList.add("done-button");
   button1.addEventListener("click", () => {
     deleteTodo(todo);
+  });
+  button2.addEventListener("click", () => {
+    const row = button2.closest("tr");
+    const todoId = row.querySelector("td").innerText;
+    updateTodoStatus(todoStatus, todoId);
   });
   todoActions.style.display = "flex";
   todoActions.style.flexDirection = "row";

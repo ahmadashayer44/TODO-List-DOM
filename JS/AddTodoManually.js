@@ -1,3 +1,4 @@
+import { TODO_API } from "./config.js";
 import { addTodo } from "./TODO.js";
 async function AddTodoManually(event) {
   console.log("event");
@@ -9,7 +10,7 @@ async function AddTodoManually(event) {
     userId: 100,
   };
 
-  let postRequest = await fetch("https://dummyjson.com/todos/add", {
+  let postRequest = await fetch(`${TODO_API}/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(todo),

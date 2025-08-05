@@ -1,5 +1,6 @@
+import { TODO_API } from "./config.js";
 export async function deleteTodo(todo) {
-  let deleteRequest = await fetch(`https://dummyjson.com/todos/${todo.id}`, {
+  let deleteRequest = await fetch(`${TODO_API}/${todo.id}`, {
     method: "DELETE",
   });
   console.log(deleteRequest);

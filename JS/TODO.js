@@ -1,6 +1,7 @@
 import { TODO_API } from "./config.js";
 import { deleteTodo } from "./DeleteTODO.js";
 import { updateTodoStatus } from "./UpdateTodoStatus.js";
+import { deleteDialog } from "./DeleteDialog.js";
 let totalTask = document.getElementById("total-tasks");
 window.totalTaskCounter = 0;
 
@@ -23,7 +24,7 @@ export function addTodo(todo) {
   button1.classList.add("delete-button");
   button2.classList.add("done-button");
   button1.addEventListener("click", () => {
-    deleteTodo(todo);
+    deleteDialog(todo);
   });
   button2.addEventListener("click", () => {
     const row = button2.closest("tr");

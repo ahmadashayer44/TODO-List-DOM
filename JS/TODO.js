@@ -5,11 +5,7 @@ import { deleteDialog } from "./DeleteDialog.js";
 let totalTask = document.getElementById("total-tasks");
 window.totalTaskCounter = 0;
 
-let TODOS = await fetch(TODO_API).then((res) =>
-  res.json().then((data) => data.todos)
-);
-
-export function addTodo(todo) {
+export function addTodo(todo, callFrom) {
   let todoRow = document.createElement("tr");
   let todoID = document.createElement("td");
   let todoDescription = document.createElement("td");
@@ -53,6 +49,22 @@ export function addTodo(todo) {
   document.getElementById("todo-tbody").appendChild(todoRow);
   totalTaskCounter++;
   totalTask.innerHTML = totalTaskCounter;
+  if (callFrom === "manual") {
+    let allTodos = JSON.parse(localStorage.getItem("todos"));
+    allTodos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(allTodos));
+  }
 }
 
-TODOS.forEach(addTodo);
+document.addEventListener("DOMContentLoaded", async () => {
+  if (localStorage.getItem("todos")) {
+    let todos = JSON.parse(localStorage.getItem("todos"));
+    todos.forEach((todo) => addTodo(todo, "loaclStorage"));
+    return;
+  }
+  let TODOS = await fetch(TODO_API).then((res) =>
+    res.json().then((data) => data.todos)
+  );
+  TODOS.forEach((todo) => addTodo(todo, "API"));
+  localStorage.setItem("todos", JSON.stringify(TODOS));
+});

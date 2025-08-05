@@ -22,4 +22,12 @@ export async function updateTodoStatus(todoStatus, todoId) {
     }),
   });
   console.log(updateRequest);
+  let AllTodos = JSON.parse(localStorage.getItem("todos"));
+
+  for (let t of AllTodos) {
+    if (t.id == todoId) {
+      t.completed = true;
+      localStorage.setItem("todos", JSON.stringify(AllTodos));
+    }
+  }
 }
